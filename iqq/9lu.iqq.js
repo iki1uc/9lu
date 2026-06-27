@@ -1,1 +1,7 @@
+// /iqq/9lu.iqq.js — RAW IQQ CORE
+export const 9lu = {
+  min: v => ["9lu","MIN",v],
+  max: v => ["9lu","MAX",v],
+  edit: v => ["9lu","EDIT",v]
+};
 
