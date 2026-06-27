@@ -2,21 +2,65 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>9lu</title>
+  <title>9lu – Startseite</title>
+
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: monospace;
+      padding: 20px;
+    }
+
+    .respo {
+      padding: 20px;
+      margin: 10px 0;
+      background: #222;
+      border: 1px solid #444;
+    }
+  </style>
 </head>
+
 <body>
 
-<div id="on3"></div>
-<div id="3te"></div>
-<div id="9lu"></div>
+<h1>9lu – Startseite</h1>
+
+<!-- Respo-1: on3 -->
+<div id="on3" class="respo"
+     data-id="ID-01-ACT"
+     data-gate="GATE-α"
+     data-tmp="TMP-1">
+  on3: wartet…
+</div>
+
+<!-- Respo-2: 3te -->
+<div id="3te" class="respo"
+     data-id="ID-02-EDGE"
+     data-gate="GATE-β"
+     data-tmp="TMP-2">
+  3te: wartet…
+</div>
+
+<!-- Respo-3: 9lu -->
+<div id="9lu" class="respo"
+     data-id="ID-03-LOOP"
+     data-gate="GATE-γ"
+     data-tmp="TMP-3">
+  9lu: wartet…
+</div>
 
 <script>
-  // START-MOVE
-  document.getElementById("9lu").innerText = "9lu: SOLO-MOVE aktiv";
-  document.getElementById("3te").innerText = "3te: SUPPORT-MOVE aktiv";
+  // ⭐ START-MOVE: 9lu öffnet zuerst
+  document.getElementById("9lu").innerText =
+    "9lu: SOLO-MOVE aktiv (Nord-Achse geöffnet)";
 
-  // ZUSEH-MOVE (SEEÜ)
-  document.getElementById("on3").innerText = "SEEÜ sieht: 9lu + 3te";
+  // ⭐ zweiter Move: 3te öffnet danach
+  document.getElementById("3te").innerText =
+    "3te: SUPPORT-MOVE aktiv (Ost-Achse geöffnet)";
+
+  // ⭐ SEEÜ sieht beide
+  document.getElementById("on3").innerText =
+    "SEEÜ: sieht 9lu + 3te (Linse aktiv)";
 </script>
 
 </body>
