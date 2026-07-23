@@ -1,0 +1,3 @@
+export function impulse9lu(room){
+  return ["9lu","IMPULSE",room];
+}
