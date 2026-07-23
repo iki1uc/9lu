@@ -2,37 +2,40 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>9lu – Visual + Matrix + Verbindungen</title>
+  <title>9lu – Visualisierung</title>
 
   <style>
-    body { background:#111; color:#fff; margin:0; }
+    body { background:#111; margin:0; }
     canvas { display:block; margin:auto; background:#000; }
   </style>
 
   <script type="module">
-    import { MATRIX_9LU } from "./9lu.html";
+    import { animate9lu } from "./9luAnim.js";
+    import { draw9lu3D } from "./9lu3D.js";
+    import { drawRing6 } from "./ring6.js";
+
     import { find9lu } from "./9Fin.html";
     import { impulse9lu } from "./9Imp.js";
     import { prefetch9lu } from "./9Pre.js";
     import { lu } from "./9lu.iqq.js";
 
-    import { draw9lu } from "./9luVis.js";
-    import { draw9luMatrix } from "./9luMatrix.js";
-    import { connect9lu3te } from "./9luConnect3te.js";
-    import { connect9luOn3 } from "./9luConnectOn3.js";
-
     window.onload = () => {
         const c = document.getElementById("canvas9lu");
         const x = c.getContext("2d");
 
-        draw9lu(x);
-        draw9luMatrix(x);
+        // ⭐ 3D + Animation + Ring‑6
+        drawRing6(x);
+        animate9lu(x);
+        draw9lu3D(x);
 
-        console.log("CONNECT 9lu→3te:", connect9lu3te());
-        console.log("CONNECT 9lu→on3:", connect9luOn3());
-        console.log("PREFETCH:", prefetch9lu());
+        // ⭐ Public‑Moves
         console.log("IMPULSE:", impulse9lu("lu1"));
         console.log("FIND:", find9lu("lu1"));
+        console.log("PREFETCH:", prefetch9lu());
+
+        // ⭐ Public‑Core
+        console.log("CORE‑VIEW:", lu.view("lu5"));
+        console.log("CORE‑ROOM:", lu.room("lu3"));
     };
   </script>
 </head>
