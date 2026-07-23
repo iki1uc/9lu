@@ -1,0 +1,8 @@
+export function find9lu(axis){
+  if(MATRIX_9LU[axis]) return MATRIX_9LU[axis];
+  if(MATRIX_9LU.public.includes(axis)) return "Public‑Achse";
+  if(MATRIX_9LU.gate.includes(axis)) return "Gate‑Achse";
+  if(MATRIX_9LU.tmp.includes(axis)) return "TMP‑Achse";
+  if(MATRIX_9LU.id.includes(axis)) return "ID‑Achse";
+  return "Unbekannt";
+}
