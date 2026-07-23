@@ -2,25 +2,13 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>9lu – Public‑Mehrraum</title>
+  <title>9lu – Visual + Matrix + Verbindungen</title>
 
   <style>
-    body {
-      background: #111;
-      color: #fff;
-      font-family: monospace;
-      padding: 20px;
-    }
-
-    .respo {
-      padding: 20px;
-      margin: 10px 0;
-      background: #222;
-      border: 1px solid #444;
-    }
+    body { background:#111; color:#fff; margin:0; }
+    canvas { display:block; margin:auto; background:#000; }
   </style>
 
-  <!-- ⭐ ALLE Module laden -->
   <script type="module">
     import { MATRIX_9LU } from "./9lu.html";
     import { find9lu } from "./9Fin.html";
@@ -28,72 +16,28 @@
     import { prefetch9lu } from "./9Pre.js";
     import { lu } from "./9lu.iqq.js";
 
+    import { draw9lu } from "./9luVis.js";
+    import { draw9luMatrix } from "./9luMatrix.js";
+    import { connect9lu3te } from "./9luConnect3te.js";
+    import { connect9luOn3 } from "./9luConnectOn3.js";
+
     window.onload = () => {
+        const c = document.getElementById("canvas9lu");
+        const x = c.getContext("2d");
 
-      /* ---------------------------------------------------------
-         ⭐ 9lu – SOLO‑MOVE (Public‑Start)
-      --------------------------------------------------------- */
-      const solo = impulse9lu("lu1").join(" / ");
-      document.getElementById("9lu").innerText =
-        "9lu: SOLO‑MOVE → " + solo;
+        draw9lu(x);
+        draw9luMatrix(x);
 
-      /* ---------------------------------------------------------
-         ⭐ 3te – SUPPORT‑MOVE
-      --------------------------------------------------------- */
-      document.getElementById("3te").innerText =
-        "3te: SUPPORT‑MOVE → O‑Ebene aktiv";
-
-      /* ---------------------------------------------------------
-         ⭐ on3 – SEEÜ‑Linse
-      --------------------------------------------------------- */
-      const see = find9lu("lu1");
-      document.getElementById("on3").innerText =
-        "SEEÜ: sieht 9lu + 3te → " + see;
-
-      /* ---------------------------------------------------------
-         ⭐ Prefetch – lädt alle 27e vor
-      --------------------------------------------------------- */
-      const pre = prefetch9lu();
-      console.log("9lu‑PREFETCH:", pre);
-
-      /* ---------------------------------------------------------
-         ⭐ Public‑Core – min/max/edit/view/room/impulse
-      --------------------------------------------------------- */
-      console.log("9lu‑CORE‑MIN:", lu.min("lu1"));
-      console.log("9lu‑CORE‑VIEW:", lu.view("lu5"));
-      console.log("9lu‑CORE‑ROOM:", lu.room("lu3"));
-      console.log("9lu‑CORE‑IMPULSE:", lu.impulse("lu9"));
+        console.log("CONNECT 9lu→3te:", connect9lu3te());
+        console.log("CONNECT 9lu→on3:", connect9luOn3());
+        console.log("PREFETCH:", prefetch9lu());
+        console.log("IMPULSE:", impulse9lu("lu1"));
+        console.log("FIND:", find9lu("lu1"));
     };
   </script>
 </head>
 
 <body>
-
-<h1>9lu – Startseite</h1>
-
-<!-- SEEÜ -->
-<div id="on3" class="respo"
-     data-id="ID-01-ACT"
-     data-gate="GATE-α"
-     data-tmp="TMP-1">
-  on3: wartet…
-</div>
-
-<!-- 3te -->
-<div id="3te" class="respo"
-     data-id="ID-02-EDGE"
-     data-gate="GATE-β"
-     data-tmp="TMP-2">
-  3te: wartet…
-</div>
-
-<!-- 9lu -->
-<div id="9lu" class="respo"
-     data-id="ID-03-LOOP"
-     data-gate="GATE-γ"
-     data-tmp="TMP-3">
-  9lu: wartet…
-</div>
-
+  <canvas id="canvas9lu" width="600" height="600"></canvas>
 </body>
 </html>
