@@ -5,8 +5,8 @@
   <title>9lu – Visualisierung</title>
 
   <style>
-    body { background:#111; margin:0; }
-    canvas { display:block; margin:auto; background:#000; }
+    body { background:#000; margin:0; }
+    canvas { display:block; margin:auto; background:#111; }
   </style>
 
   <script type="module">
@@ -14,28 +14,14 @@
     import { draw9lu3D } from "./9lu3D.js";
     import { drawRing6 } from "./ring6.js";
 
-    import { find9lu } from "./9Fin.html";
-    import { impulse9lu } from "./9Imp.js";
-    import { prefetch9lu } from "./9Pre.js";
-    import { lu } from "./9lu.iqq.js";
-
     window.onload = () => {
         const c = document.getElementById("canvas9lu");
         const x = c.getContext("2d");
 
-        // ⭐ 3D + Animation + Ring‑6
-        drawRing6(x);
-        animate9lu(x);
-        draw9lu3D(x);
-
-        // ⭐ Public‑Moves
-        console.log("IMPULSE:", impulse9lu("lu1"));
-        console.log("FIND:", find9lu("lu1"));
-        console.log("PREFETCH:", prefetch9lu());
-
-        // ⭐ Public‑Core
-        console.log("CORE‑VIEW:", lu.view("lu5"));
-        console.log("CORE‑ROOM:", lu.room("lu3"));
+        // Reihenfolge wichtig!
+        drawRing6(x);     // Meta-Ebene zuerst
+        animate9lu(x);    // Animation
+        draw9lu3D(x);     // 3D-Effekt
     };
   </script>
 </head>
